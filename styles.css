@@ -145,12 +145,18 @@ html {
 
 .sugerencia {
     max-width: 25%;
-     border-radius: 15px;
+    border-radius: 15px;
+    display: inline-block;
+    box-sizing: border-box;
+    margin: 0 75px 0 150px;
+
 }
 
 .fotosugerencia{
-    max-width: 100px;
-    max-height: 100px;
+    width: 100%;
+    max-width: 50%;
+    max-height: 50%;
+    object-fit: cover;
     margin: auto;
     display: block;
     border-radius: 15px;
@@ -173,15 +179,65 @@ html {
 
 .datossugerencia:first-of-type {
     margin: 10% 0% 0% 5%;
-    display: inline-block;
+    display: block;
 }
 
 .datossugerencia {
     margin: 5% 0% 0% 5%;
-    display: inline-block;
+    display: block;
 }
 
 .datossugerencia:last-of-type {
     margin: 5% 0% 10% 5%;
-    display: inline-block;
+    display: block;
 }
+
+.iconossugerencia {
+    margin: auto 20px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
+
+.recomendaciones{
+    padding: 0 auto 0 75px;
+    width: 50%;
+    border-width: 0px;
+    display: inline;
+    vertical-align: top;
+}
+
+.recomendacion {
+    border-radius: 15px;
+    display: block;
+    width: 50%;
+    margin: 20px 10px;
+    background-color: lightgray;
+}
+
+
+
+.botonllamada {
+    background-color: lightskyblue;
+    border: 1px;
+    color: white;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    margin: 0px 2px;
+    cursor: pointer;
+    border-radius: 15px;
+    margin: auto;
+}
+
+.fotorecomendacion {
+    width: 100%;
+    max-width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
