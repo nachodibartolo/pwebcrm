@@ -1,8 +1,9 @@
 /* NAVBAR*/
 
 .topnav {
-    background-color: #FD9D5D;
+    background-color: #34A1EA;
     overflow: hidden;
+    border-radius: 15px;
 }
   
 .topnav a {
@@ -14,14 +15,13 @@
 }
 
 .topnav a:hover {
-    background-color: #ddd;
+    background-color: white;
     color: black;
 }
 
 
 .topnav a.active {
-    background-color: #3F612D;
-    color: white;
+    background-color: #FEF9EF;
 }
 
 .der {
@@ -39,11 +39,11 @@
 }
 
 .footer a:link, .link {
-    color:#FD9D5D;
+    color:#34A1EA;
 }
 
 .footer a:visited, .link:visited {
-    color:#E05B02;
+    color:black;
 }
 
 /* LOGINSIGNUP */
@@ -81,6 +81,7 @@ html {
     box-sizing: border-box;
     border-radius: 15px;
     height: 285px;
+    border-color: #34A1EA;
 }
 
 .botoningreso {
@@ -89,11 +90,11 @@ html {
     margin: 1em auto;
     height: 2em;
     font-size: 1.1rem;
-    border-color: #E05B02;
+    border-color: #34A1EA;
     min-width: 300px;
     border-radius: 5px;
     margin-top: 50px;
-    background-color: #FD9D5D;
+    background-color: #FEF9EF;
 }
 
 .botoningreso:hover {
@@ -110,7 +111,6 @@ html {
 .inputcred{
     display: block;
     border-radius: 5px;
-    border-color: #E05B02;
     height: 1.5em;
     width: 400px;
 }
@@ -127,7 +127,7 @@ html {
 
 
 .divisor {
-    border-bottom: 2px solid #E05B02;
+    border-bottom: 2px solid #34A1EA;
     margin: 2px 0;
     clear: right;
     margin: 5% 5%;
@@ -139,6 +139,7 @@ html {
     display: block;
     box-sizing: border-box;
     border-radius: 15px;
+    border-color: #34A1EA;
 }
 
 /* Dashboard */
@@ -149,6 +150,7 @@ html {
     display: inline-block;
     box-sizing: border-box;
     margin: 0 75px 0 150px;
+    border-color: #34A1EA;
 
 }
 
@@ -163,7 +165,7 @@ html {
 }
 
 .botonwhatsapp {
-    background-color: #25D366;
+    background-color: #009018;
     border: 1px;
     color: white;
     padding: 15px 32px;
@@ -196,6 +198,9 @@ html {
     margin: auto 20px;
     display: inline-block;
     vertical-align: middle;
+    width: 16px;
+    height: 16px;
+    object-fit: cover;
 }
 
 
@@ -213,13 +218,14 @@ html {
     display: block;
     width: 50%;
     margin: 20px 10px;
-    background-color: lightgray;
+    background-color: #FEF9EF;
+    border-color: #34A1EA;
 }
 
 
 
 .botonllamada {
-    background-color: lightskyblue;
+    background-color: #34A1EA;
     border: 1px;
     color: white;
     padding: 10px 32px;
@@ -234,10 +240,56 @@ html {
 }
 
 .fotorecomendacion {
-    width: 100%;
-    max-width: 300px;
+    width: 40%;
+    max-width: 60%;
     height: 300px;
     object-fit: cover;
     border-radius: 10px;
 }
 
+
+/* CONTACTOS */
+
+.navabc {
+    background-color: #34A1EA;
+    overflow: hidden;
+    width: max-content;
+    margin: 20px auto;
+}
+  
+.navabc a{
+    color: black;
+    text-align: center;
+    padding: 5px 10px;
+    text-decoration: none;
+    font-size: 14px;
+    border-width: 2px;
+    display: inline;
+}
+
+.navabc a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+
+.navabc a.active {
+    background-color: lightgray;
+}
+
+.outcontactos {
+    display: block;
+    width: 60%;
+    margin: 20px auto;
+    border-radius: 15px;
+    padding: 10px 20px;
+}
+
+.datospersona {
+    margin-top: -5px;
+    display: block;
+}
+
+.personalista {
+
+}
