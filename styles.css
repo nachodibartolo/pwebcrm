@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700;800&display=swap');
+
 /* NAVBAR*/
 
 .topnav {
@@ -253,12 +255,12 @@ html {
 .navabc {
     background-color: #34A1EA;
     overflow: hidden;
-    width: max-content;
+    width: 75%;
     margin: 20px auto;
     border-radius: 10px;
 }
   
-.navabc a{
+.navabc a:not(.agregar){
     color: black;
     text-align: center;
     padding: 5px 10px;
@@ -266,6 +268,11 @@ html {
     font-size: 14px;
     border-width: 2px;
     display: inline;
+    float: left;
+}
+
+.navabc a:first-of-type {
+    margin-left: 10px;
 }
 
 .navabc a:hover {
@@ -290,6 +297,44 @@ html {
     display: block;
 }
 
-.personalista {
-    
+.personalista:first-of-type {
+    margin-top:4%;
+}
+
+.personalista:last-of-type {
+    margin-bottom:4%;
+}
+
+.agregar {
+    display: inline;
+    float: right;
+    margin: 3px 10px;
+    color: black;
+    font-size: 1.1rem;
+}
+
+/* Agregar Usuario */
+
+.fieldagregarusuario {
+    width: max-content;
+    border-radius: 15px;
+    margin: 0 auto;
+}
+
+.leyendainputcontacto {
+    display: block;
+    margin: 30px 30px 0 30px;
+}
+
+.inputcontacto {
+    display: block;
+    border-radius: 5px;
+    height: 1.5em;
+    width: 400px;
+    margin: 0 30px 0 30px;
+}
+
+.fotoagragarcontacto {
+    display: block;
+    margin: 30px auto 0 auto;
 }
