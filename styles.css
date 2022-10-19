@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700;800&display=swap');
 
+.centered {
+    width: 80%;
+    margin: 0 auto;
+}
+
 /* NAVBAR*/
 
 .topnav {
@@ -337,4 +342,27 @@ html {
 .fotoagragarcontacto {
     display: block;
     margin: 30px auto 0 auto;
+}
+
+/* ACTIVIDADES */
+
+.agregaractividad{
+    display: block;
+    border-radius: 15px;
+}
+
+.mincontent {
+    width: max-content;
+    border-radius: 15px;
+    margin: 0 85%;
+}
+
+.burbujarecomendacion {
+    border-radius: 15px;
+    display: block;
+    width: 70%;
+    margin: 20px 10px;
+    background-color: #DDDDDD;
+    border-color: #34A1EA;
+    margin: 30px auto;
 }
