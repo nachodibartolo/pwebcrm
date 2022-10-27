@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 20, 2022 at 05:45 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 27-10-2022 a las 17:09:20
+-- Versión del servidor: 10.4.24-MariaDB
+-- Versión de PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,37 +18,37 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `pwebcrm`
+-- Base de datos: `pwebcrm`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `acciones`
+-- Estructura de tabla para la tabla `acciones`
 --
 
 CREATE TABLE `acciones` (
-  `PK` int(8) NOT NULL,
-  `Accion` varchar(56) NOT NULL,
+  `accionid` int(8) NOT NULL,
+  `accion` varchar(56) NOT NULL,
   `userpk` int(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `acciones`
+-- Volcado de datos para la tabla `acciones`
 --
 
-INSERT INTO `acciones` (`PK`, `Accion`, `userpk`) VALUES
+INSERT INTO `acciones` (`accionid`, `accion`, `userpk`) VALUES
 (1, 'Birras', 1),
 (3, 'hola', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `actividades`
+-- Estructura de tabla para la tabla `actividades`
 --
 
 CREATE TABLE `actividades` (
-  `PK` int(8) NOT NULL,
+  `actividadid` int(8) NOT NULL,
   `userpk` int(8) NOT NULL,
   `lugarpk` int(8) NOT NULL,
   `personapk` int(8) NOT NULL,
@@ -59,20 +59,20 @@ CREATE TABLE `actividades` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `actividades`
+-- Volcado de datos para la tabla `actividades`
 --
 
-INSERT INTO `actividades` (`PK`, `userpk`, `lugarpk`, `personapk`, `accionpk`, `hora`, `dia`, `notas`) VALUES
+INSERT INTO `actividades` (`actividadid`, `userpk`, `lugarpk`, `personapk`, `accionpk`, `hora`, `dia`, `notas`) VALUES
 (1, 1, 1, 14, 1, '234', '2022-10-10', 'lksfjdña sdñkajd fñkajsd flkja sdlkjawoeua dfhjkad fadfk');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `contactos`
+-- Estructura de tabla para la tabla `contactos`
 --
 
 CREATE TABLE `contactos` (
-  `PK` int(8) NOT NULL,
+  `contactoid` int(8) NOT NULL,
   `nombre` varchar(56) NOT NULL,
   `apellido` varchar(56) NOT NULL,
   `telefono` varchar(56) NOT NULL,
@@ -82,20 +82,20 @@ CREATE TABLE `contactos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `contactos`
+-- Volcado de datos para la tabla `contactos`
 --
 
-INSERT INTO `contactos` (`PK`, `nombre`, `apellido`, `telefono`, `direccion`, `cumple`, `userpk`) VALUES
+INSERT INTO `contactos` (`contactoid`, `nombre`, `apellido`, `telefono`, `direccion`, `cumple`, `userpk`) VALUES
 (14, 'fsdf', '4234', '324234', '234', '2022-10-11', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `lugares`
+-- Estructura de tabla para la tabla `lugares`
 --
 
 CREATE TABLE `lugares` (
-  `PK` int(8) NOT NULL,
+  `lugarid` int(8) NOT NULL,
   `lugar` varchar(56) NOT NULL,
   `telefono` varchar(56) NOT NULL,
   `direccion` varchar(56) NOT NULL,
@@ -103,139 +103,139 @@ CREATE TABLE `lugares` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `lugares`
+-- Volcado de datos para la tabla `lugares`
 --
 
-INSERT INTO `lugares` (`PK`, `lugar`, `telefono`, `direccion`, `userpk`) VALUES
+INSERT INTO `lugares` (`lugarid`, `lugar`, `telefono`, `direccion`, `userpk`) VALUES
 (1, 'lugar', '123123', 'sdfsad', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuarios`
+-- Estructura de tabla para la tabla `usuarios`
 --
 
 CREATE TABLE `usuarios` (
-  `PK` int(8) NOT NULL,
-  `User` varchar(56) NOT NULL,
-  `Password` varchar(56) NOT NULL,
-  `Mail` varchar(56) NOT NULL,
-  `Nacimiento` date NOT NULL,
-  `Fechadecreacion` date NOT NULL DEFAULT current_timestamp()
+  `id` int(8) NOT NULL,
+  `user` varchar(56) NOT NULL,
+  `password` varchar(56) NOT NULL,
+  `mail` varchar(56) NOT NULL,
+  `nacimiento` date NOT NULL,
+  `fechadecreacion` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `usuarios`
+-- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`PK`, `User`, `Password`, `Mail`, `Nacimiento`, `Fechadecreacion`) VALUES
+INSERT INTO `usuarios` (`id`, `user`, `password`, `mail`, `nacimiento`, `fechadecreacion`) VALUES
 (1, 'dibi', 'dibi', 'skdjfh@kasdhf.cas', '2022-10-20', '2022-10-20');
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `acciones`
+-- Indices de la tabla `acciones`
 --
 ALTER TABLE `acciones`
-  ADD PRIMARY KEY (`PK`),
+  ADD PRIMARY KEY (`accionid`),
   ADD KEY `userpk` (`userpk`) USING BTREE;
 
 --
--- Indexes for table `actividades`
+-- Indices de la tabla `actividades`
 --
 ALTER TABLE `actividades`
-  ADD PRIMARY KEY (`PK`),
+  ADD PRIMARY KEY (`actividadid`),
   ADD KEY `userpk` (`userpk`),
   ADD KEY `personapk` (`personapk`),
   ADD KEY `lugarpk` (`lugarpk`),
   ADD KEY `accionpk` (`accionpk`);
 
 --
--- Indexes for table `contactos`
+-- Indices de la tabla `contactos`
 --
 ALTER TABLE `contactos`
-  ADD PRIMARY KEY (`PK`),
+  ADD PRIMARY KEY (`contactoid`),
   ADD KEY `userpk` (`userpk`);
 
 --
--- Indexes for table `lugares`
+-- Indices de la tabla `lugares`
 --
 ALTER TABLE `lugares`
-  ADD PRIMARY KEY (`PK`),
+  ADD PRIMARY KEY (`lugarid`),
   ADD KEY `userpk` (`userpk`) USING BTREE;
 
 --
--- Indexes for table `usuarios`
+-- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`PK`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `acciones`
+-- AUTO_INCREMENT de la tabla `acciones`
 --
 ALTER TABLE `acciones`
-  MODIFY `PK` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `accionid` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `actividades`
+-- AUTO_INCREMENT de la tabla `actividades`
 --
 ALTER TABLE `actividades`
-  MODIFY `PK` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `actividadid` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `contactos`
+-- AUTO_INCREMENT de la tabla `contactos`
 --
 ALTER TABLE `contactos`
-  MODIFY `PK` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `contactoid` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT for table `lugares`
+-- AUTO_INCREMENT de la tabla `lugares`
 --
 ALTER TABLE `lugares`
-  MODIFY `PK` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `lugarid` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `usuarios`
+-- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `PK` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- Constraints for dumped tables
+-- Restricciones para tablas volcadas
 --
 
 --
--- Constraints for table `acciones`
+-- Filtros para la tabla `acciones`
 --
 ALTER TABLE `acciones`
-  ADD CONSTRAINT `acciones_ibfk_1` FOREIGN KEY (`userpk`) REFERENCES `usuarios` (`PK`) ON DELETE CASCADE;
+  ADD CONSTRAINT `acciones_ibfk_1` FOREIGN KEY (`userpk`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `actividades`
+-- Filtros para la tabla `actividades`
 --
 ALTER TABLE `actividades`
-  ADD CONSTRAINT `actividades_ibfk_1` FOREIGN KEY (`userpk`) REFERENCES `usuarios` (`PK`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `actividades_ibfk_2` FOREIGN KEY (`lugarpk`) REFERENCES `lugares` (`PK`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `actividades_ibfk_3` FOREIGN KEY (`accionpk`) REFERENCES `acciones` (`PK`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `actividades_ibfk_4` FOREIGN KEY (`personapk`) REFERENCES `contactos` (`PK`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `actividades_ibfk_1` FOREIGN KEY (`userpk`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `actividades_ibfk_2` FOREIGN KEY (`lugarpk`) REFERENCES `lugares` (`lugarid`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `actividades_ibfk_3` FOREIGN KEY (`accionpk`) REFERENCES `acciones` (`accionid`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `actividades_ibfk_4` FOREIGN KEY (`personapk`) REFERENCES `contactos` (`contactoid`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `contactos`
+-- Filtros para la tabla `contactos`
 --
 ALTER TABLE `contactos`
-  ADD CONSTRAINT `contactos_ibfk_1` FOREIGN KEY (`userpk`) REFERENCES `usuarios` (`PK`) ON DELETE NO ACTION ON UPDATE CASCADE;
+  ADD CONSTRAINT `contactos_ibfk_1` FOREIGN KEY (`userpk`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
--- Constraints for table `lugares`
+-- Filtros para la tabla `lugares`
 --
 ALTER TABLE `lugares`
-  ADD CONSTRAINT `lugares_ibfk_1` FOREIGN KEY (`userpk`) REFERENCES `usuarios` (`PK`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `lugares_ibfk_1` FOREIGN KEY (`userpk`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
