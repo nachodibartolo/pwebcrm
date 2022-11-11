@@ -57,21 +57,39 @@ $texto = <<<TEXTO
     <section name="outputcontactos">
         <fieldset class="outcontactos">
             <div class="personalista">
-                <p class="bold"><img src="iconos/persona.png" class="iconossugerencia">Leonel Messi</p>
-                <p class="datospersona"><img src="iconos/telefono.png" class="iconossugerencia">11 5961 3577</p>
-                <p class="datospersona"><img src="iconos/lugar.png" class="iconossugerencia">Bonpland 2117, C1425FWA CABA</p>
+            <p class="bold"><img src="iconos/persona.png" class="iconossugerencia">Leonel Messi</p>
+            <p class="datospersona"><img src="iconos/telefono.png" class="iconossugerencia">11 5961 3577</p>
+            <p class="datospersona"><img src="iconos/lugar.png" class="iconossugerencia">Bonpland 2117, C1425FWA CABA</p>
+            <form action="modificarcont.php?idcontacto=">
+                <input type="submit" value="Modificar" class="modificarboton">
+            </form>
+            <form action="eliminar.php?idcontacto= ">
+                <input type="submit" value="Eliminar" class="eliminarboton">
+            </form>
             </div>
             <div class="divisor"></div>
             <div class="personalista">
                 <p class="bold"><img src="iconos/persona.png" class="iconossugerencia">Lautaro Martinez</p>
                 <p class="datospersona"><img src="iconos/telefono.png" class="iconossugerencia">11 5961 3577</p>
                 <p class="datospersona"><img src="iconos/lugar.png" class="iconossugerencia">Bonpland 2117, C1425FWA CABA</p>
+                <form action="modificarcont.php?idcontacto=">
+                    <input type="submit" value="Modificar" class="modificarboton">
+                </form>
+                <form action="eliminar.php?idcontacto= ">
+                    <input type="submit" value="Eliminar" class="eliminarboton">
+                </form>
             </div>
             <div class="divisor"></div>
             <div class="personalista">
                 <p class="bold"><img src="iconos/persona.png" class="iconossugerencia">Angel Di Maria</p>
                 <p class="datospersona"><img src="iconos/telefono.png" class="iconossugerencia">11 5961 3577</p>
                 <p class="datospersona"><img src="iconos/lugar.png" class="iconossugerencia">Bonpland 2117, C1425FWA CABA</p>
+                <form action="modificarcont.php?idcontacto=">
+                    <input type="submit" value="Modificar" class="modificarboton">
+                </form>
+                <form action="eliminar.php?idcontacto= ">
+                    <input type="submit" value="Eliminar" class="eliminarboton">
+                </form>
             </div>
         </fieldset>
     </section>

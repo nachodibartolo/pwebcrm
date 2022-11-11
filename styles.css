@@ -366,3 +366,36 @@ html {
     border-color: #34A1EA;
     margin: 30px auto;
 }
+
+/* Modificar */
+
+.modificarboton{
+    background-color: #34A1EA;
+    color: white;
+    border-radius: 15px;
+    display: block;
+    float: right;
+    width:max-content;
+    height: 30px;
+}
+
+.modificarboton:hover {
+    background-color: white;
+    color: black;
+}
+
+.eliminarboton{
+    background-color: red;
+    color: white;
+    border-radius: 15px;
+    display: block;
+    float: right;
+    margin: 0 5px 10px auto;
+    width:max-content;
+    height: 30px;
+}
+
+.eliminarboton:hover {
+    background-color: white;
+    color: black;
+}

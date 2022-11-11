@@ -36,6 +36,9 @@ $pagina = <<<TEXTO
                 <p class="datospersona"><img src="iconos/reloj.png" class="iconossugerencia">16:00</p>
             <div class="divisor"></div>
                 <p class="datospersona centered">Fuimos a tomar un cafe a la tarde para hablar de la situacion economica actual del pais. Messi menciono que es kirchnerista y que Baradel le parece una persona que quiere el bien comun.</p>
+                <form action="eliminar.php?idactividad= ">
+                    <input type="submit" value="Eliminar" class="eliminarboton">
+                </form>
             </div>
         </fieldset>
         <fieldset class="burbujarecomendacion">
@@ -45,6 +48,9 @@ $pagina = <<<TEXTO
                 <p class="datospersona"><img src="iconos/reloj.png" class="iconossugerencia">21:00</p>
             <div class="divisor"></div>
                 <p class="datospersona centered">Cumpleaños de Alberto en Olivos.</p>
+                <form action="eliminar.php?idactividad= ">
+                    <input type="submit" value="Eliminar" class="eliminarboton">
+                </form>
             </div>
         </fieldset>
     </section>
