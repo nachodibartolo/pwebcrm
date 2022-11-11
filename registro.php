@@ -31,20 +31,20 @@ $texto = <<<TEXTO
             <form>
                 <br>
                 <label for="usuario" class="bold">Usuario:</label>
-                <br><input type="text" id="usuario" name="usuario" class="inputcred" required/>
+                <br><input type="text" id="usuario" name="usuario" class="inputcred error" required/>
                 <br>
                 <label for="contrasenia" class="bold">Contaraseña:</label>
-                <br><input type="text" id="contrasenia" name="contrasenia" class="inputcred" required/>
+                <br><input type="text" id="contrasenia" name="contrasenia" class="inputcred error" required/>
                 <br>
                 <label for="email" class="bold">Email:</label>
-                <br><input type="email" id="email" name="email" class="inputcred" required/>
+                <br><input type="email" id="email" name="email" class="inputcred error" required/>
                 <br>
                 <label for="cumple" class="bold">Fecha de nacimiento:</label>
-                <br><input type="date" id="cumple" name="cumple" class="inputcred" required/>
+                <br><input type="date" id="cumple" name="cumple" class="inputcred error" required/>
                 <br>
                 <label for="terminos">Acepto los <a href="https://www.facebook.com/legal/terms" class="link">terminos y condiciones:</a></label>
-                <input type="checkbox" id="terminos" name="termninos" class="inputcred" required/>
-                <input type="submit" value="Ingresar" class="botoningreso bold"/>
+                <input type="checkbox" id="terminos" name="termninos" class="inputcred" required>
+                <input type="submit" id="boton" value="Ingresar" class="botoningreso bold" disabled>
             </form>
         </fieldset>
         <div class="divisor"></div>
@@ -53,6 +53,7 @@ $texto = <<<TEXTO
         <p>Creado por <a href="https://github.com/ignaciodibartolo">Ignacio Di Bartolo</a></p>
         <p>UCA 2022</p>
     </footer>
+	<script src="js/registro.js" charset="utf-8"></script>
 </body>
 </html>
 

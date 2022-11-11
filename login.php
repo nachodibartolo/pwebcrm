@@ -4,7 +4,7 @@ $texto = <<<TEXTO
 
 <!DOCTYPE html>
 <html lang="es">
-    
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -35,11 +35,11 @@ $texto = <<<TEXTO
             <form>
                 <br>
                 <label for="usuario"><a class="bold">Usuario:</a>
-                <br><input type="text" id="usuario" name="usuario" class="inputcred"/></label>
+                <br><input type="text" id="usuario" name="usuario" class="inputcred error"/></label>
                 <br>
                 <label for="contrasenia"><a class="bold">Contaraseña:</a>
-                <br><input type="text" id="contrasenia" name="contrasenia" class="inputcred"/></label>
-                <input type="submit" value="Ingresar" class="botoningreso bold"/>
+                <br><input type="text" id="contrasenia" name="contrasenia" class="inputcred error"/></label>
+                <input type="submit" id="boton" value="Ingresar" class="botoningreso bold" disabled>
             </form>
         </fieldset>
         <div class="divisor"></div>
@@ -48,6 +48,7 @@ $texto = <<<TEXTO
         <p>Creado por <a href="https://github.com/ignaciodibartolo">Ignacio Di Bartolo</a></p>
         <p>UCA 2022</p>
     </footer>
+	<script src="js/login.js" charset="utf-8"></script>
 </body>
 </html>
 

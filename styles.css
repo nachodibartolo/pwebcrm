@@ -12,7 +12,7 @@
     overflow: hidden;
     border-radius: 15px;
 }
-  
+
 .topnav a {
     color: black;
     text-align: center;
@@ -264,7 +264,7 @@ html {
     margin: 20px auto;
     border-radius: 10px;
 }
-  
+
 .navabc a:not(.agregar){
     color: black;
     text-align: center;
@@ -398,4 +398,11 @@ html {
 .eliminarboton:hover {
     background-color: white;
     color: black;
+}
+
+.error{
+	background-color: rgb(255,0,0,0.5);
+}
+.correcto{
+	background-color: rgb(0,255,0,0.5);
 }
