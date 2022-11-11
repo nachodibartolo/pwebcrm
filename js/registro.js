@@ -23,12 +23,12 @@ function checkearBoton(){
 	var emailTieneError = document.getElementById("email").classList.contains('error');
 	var fechaTieneError = document.getElementById("cumple").classList.contains('error');
 
-	if(usuarioTieneError || contraseniaTieneError || emailTieneError || fechaTieneError){ //si alguna de los inputs tiene error, el boton se desabilita
+	if(usuarioTieneError || contraseniaTieneError || emailTieneError || fechaTieneError){ 
 		if(!document.getElementById("boton").hasAttribute("disable")){
 			document.getElementById('boton').setAttribute('disabled', '');
 		}
 	}
-	else{ // solo si todos los inputs estan correctos se habilita el boton
+	else{ 
 		document.getElementById('boton').removeAttribute('disabled');
 	}
 }
@@ -39,13 +39,13 @@ document.getElementById('usuario').addEventListener('input', function () { //Usu
 	var largoCorrecto = true;
 	var i = 0;
 
-	if (usuario.length < 5) { //largo necesario: mayor o igual a 5
+	if (usuario.length < 5) {
 		largoCorrecto = false;
     }
 
-	while(i<usuario.length) { //reviso la escritura
+	while(i<usuario.length) { 
     	ascii = usuario.charCodeAt(i);
-    	if (!((ascii>96 && ascii<123) || (ascii>47 && ascii<58))) { //Permite letras y numeros unicamente
+    	if (!((ascii>96 && ascii<123) || (ascii>47 && ascii<58))) {
 			escrituraCorrecta = false;
 		}
 		i++ ;
@@ -69,13 +69,13 @@ document.getElementById('contrasenia').addEventListener('input', function () { /
 	var largoCorrecto = true;
 	var i = 0;
 
-	if (contrasenia.length < 5) { //largo necesario: mayor o igual a 5
+	if (contrasenia.length < 5) { 
 		largoCorrecto = false;
     }
 
-	while(i<contrasenia.length) { //reviso la escritura
+	while(i<contrasenia.length) { 
     	ascii = contrasenia.charCodeAt(i);
-    	if (!((ascii>96 && ascii<123) || (ascii>47 && ascii<58))) { //Permite letras y numeros unicamente
+    	if (!((ascii>96 && ascii<123) || (ascii>47 && ascii<58))) { 
 			escrituraCorrecta = false;
 		}
 		i++ ;

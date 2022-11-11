@@ -21,13 +21,13 @@ document.getElementById('usuario').addEventListener('input', function () { //Usu
 	var largoCorrecto = true;
 	var i = 0;
 
-	if (usuario.length < 5) { //largo necesario: mayor o igual a 5
+	if (usuario.length < 5) {
 		largoCorrecto = false;
     }
 
-	while(i<usuario.length) { //reviso la escritura
+	while(i<usuario.length) { //reviso escritura
     	ascii = usuario.charCodeAt(i);
-    	if (!((ascii>96 && ascii<123) || (ascii>47 && ascii<58))) { //Permite letras y numeros unicamente
+    	if (!((ascii>96 && ascii<123) || (ascii>47 && ascii<58))) {
 			escrituraCorrecta = false;
 		}
 		i++ ;
@@ -48,13 +48,13 @@ document.getElementById('contrasenia').addEventListener('input', function () { /
 	var largoCorrecto = true;
 	var i = 0;
 
-	if (contrasenia.length < 5) { //largo necesario: mayor o igual a 5
+	if (contrasenia.length < 5) {
 		largoCorrecto = false;
     }
 
-	while(i<contrasenia.length) { //reviso la escritura
+	while(i<contrasenia.length) { //reviso escritura
     	ascii = contrasenia.charCodeAt(i);
-    	if (!((ascii>96 && ascii<123) || (ascii>47 && ascii<58))) { //Permite letras y numeros unicamente
+    	if (!((ascii>96 && ascii<123) || (ascii>47 && ascii<58))) { 
 			escrituraCorrecta = false;
 		}
 		i++ ;

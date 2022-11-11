@@ -16,14 +16,14 @@ if (!$link) {
 
 if(isset($_SESSION['singed_in']) && $_SESSION['singed_in'] == true) {
     echo("<div class='topnav'>
-    <a class='izq' href='index.php'>Inicio</a>
-    <a class='izq' href='contactos.php'>Contactos</a>
-    <a class='izq' href='actividad.php'>Actividad</a>
     </div>");
 }
 
 else {
     echo("<div class='topnav'>
+    <a class='izq' href='index.php'>Inicio</a>
+    <a class='izq' href='contactos.php'>Contactos</a>
+    <a class='izq' href='actividad.php'>Actividad</a>
     <a class='der' href='login.php'>Login</a>
     <a class='der' href='registro.php'>Registro</a>
     </div>");
