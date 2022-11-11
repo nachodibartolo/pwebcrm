@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700;800&display=swap');
 
+.centered {
+    width: 80%;
+    margin: 0 auto;
+}
+
 /* NAVBAR*/
 
 .topnav {
@@ -7,7 +12,7 @@
     overflow: hidden;
     border-radius: 15px;
 }
-  
+
 .topnav a {
     color: black;
     text-align: center;
@@ -259,7 +264,7 @@ html {
     margin: 20px auto;
     border-radius: 10px;
 }
-  
+
 .navabc a:not(.agregar){
     color: black;
     text-align: center;
@@ -337,4 +342,67 @@ html {
 .fotoagragarcontacto {
     display: block;
     margin: 30px auto 0 auto;
+}
+
+/* ACTIVIDADES */
+
+.agregaractividad{
+    display: block;
+    border-radius: 15px;
+}
+
+.mincontent {
+    width: max-content;
+    border-radius: 15px;
+    margin: 0 85%;
+}
+
+.burbujarecomendacion {
+    border-radius: 15px;
+    display: block;
+    width: 70%;
+    margin: 20px 10px;
+    background-color: #DDDDDD;
+    border-color: #34A1EA;
+    margin: 30px auto;
+}
+
+/* Modificar */
+
+.modificarboton{
+    background-color: #34A1EA;
+    color: white;
+    border-radius: 15px;
+    display: block;
+    float: right;
+    width:max-content;
+    height: 30px;
+}
+
+.modificarboton:hover {
+    background-color: white;
+    color: black;
+}
+
+.eliminarboton{
+    background-color: red;
+    color: white;
+    border-radius: 15px;
+    display: block;
+    float: right;
+    margin: 0 5px 10px auto;
+    width:max-content;
+    height: 30px;
+}
+
+.eliminarboton:hover {
+    background-color: white;
+    color: black;
+}
+
+.error{
+	background-color: rgb(255,0,0,0.5);
+}
+.correcto{
+	background-color: rgb(0,255,0,0.5);
 }
