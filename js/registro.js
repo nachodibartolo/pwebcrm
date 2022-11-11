@@ -17,17 +17,18 @@ function ponerCorrecto(id){
 
 function checkearBoton(){
 
+	//checkeo si alguna de los inputs tiene la clase 'error'
 	var usuarioTieneError = document.getElementById("usuario").classList.contains('error');
 	var contraseniaTieneError = document.getElementById("contrasenia").classList.contains('error');
 	var emailTieneError = document.getElementById("email").classList.contains('error');
 	var fechaTieneError = document.getElementById("cumple").classList.contains('error');
 
-	if(usuarioTieneError || contraseniaTieneError || emailTieneError || fechaTieneError){
+	if(usuarioTieneError || contraseniaTieneError || emailTieneError || fechaTieneError){ //si alguna de los inputs tiene error, el boton se desabilita
 		if(!document.getElementById("boton").hasAttribute("disable")){
 			document.getElementById('boton').setAttribute('disabled', '');
 		}
 	}
-	else{
+	else{ // solo si todos los inputs estan correctos se habilita el boton
 		document.getElementById('boton').removeAttribute('disabled');
 	}
 }
@@ -56,7 +57,7 @@ document.getElementById('usuario').addEventListener('input', function () { //Usu
 	else{
 		ponerError("usuario");
 	}
-	
+
 	checkearBoton();
 
 });
@@ -108,16 +109,16 @@ document.getElementById('email').addEventListener('input', function () { //Email
 
 document.getElementById('cumple').addEventListener('input', function () { //Fecha de nacimiento
 
-	var fechaActual = Date.now() / 31536000000 // cantidad de anios que pasaron desde 1970
-	var cumple  = document.getElementById('cumple').value;
-	cumple = cumple.split("-");
+	var fechaActual = Date.now() / 31536000000 // cantidad de anios que pasaron desde 1970 hasta ahora
+	var cumple  = document.getElementById('cumple').value; //obtiene la fecha en forma de string "aaaa-mm-dd"
+	cumple = cumple.split("-"); //transforma la fecha a array ["aaaa","mm","dd"]
 	for(i=0;i<cumple.length;i++){
-		cumple[i] = parseInt(cumple[i]);
+		cumple[i] = parseInt(cumple[i]); //transforma los valores del array a int [aaaa,mm,dd]
 	}
-	cumple[0] -= 1970;
-	var fechaCumple = cumple[0] + cumple[1]/12 + cumple[2]/365;
+	cumple[0] -= 1970; // cantidad de anios que pasaron desde 1970 hasta el anio de la fecha de cumple
+	var fechaCumple = cumple[0] + cumple[1]/12 + cumple[2]/365; //pasa el array cumple a cantidad anios
 
-	if(fechaActual-fechaCumple<18){
+	if(fechaActual-fechaCumple<18){ //calcula la edad y comprueba que sea mayor de 18
 		ponerError("cumple");
 	}
 	else{
