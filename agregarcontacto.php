@@ -26,7 +26,7 @@ $texto = <<<TEXTO
     <div>
         <div class="divisor"></div>
         <fieldset class="fieldagregarusuario">
-            <form>
+            <form method="post" action="scrptagregarcontacto.php" enctype="multipart/form-data">
                 <img src="iconos/persona.png" class="fotoagragarcontacto"/>
                 <br>
                 <label for="nombre"><a class="bold leyendainputcontacto">Nombre:</a>
@@ -39,6 +39,8 @@ $texto = <<<TEXTO
                 <br><input type="text" id="direccion" name="direccion" class="inputcontacto" placeholder=" AV. 9 de julio 1293"/></label>
                 <label for="cumple" class="bold leyendainputcontacto">Cumpleaños:</label>
                 <br><input type="date" id="cumple" name="cumple" class="inputcontacto"/>
+                <label for="imagen" class="bold leyendainputcontacto">Imagen:</label>
+                <br><input type="file" id="file" name="file" class="inputcontacto"/>
                 <input type="submit" value="Añadir" class="botoningreso bold"/>
             </form>
         </fieldset>

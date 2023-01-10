@@ -39,6 +39,10 @@
     float: left;
 }
 
+.centro {
+    margin: 10% 45% 0 45%;
+}	
+
 /* FOOTER */
 
 .footer {
@@ -118,7 +122,7 @@ html {
 .inputcred{
     display: block;
     border-radius: 5px;
-    height: 1.5em;
+    height: 2em;
     width: 400px;
 }
 
@@ -260,7 +264,7 @@ html {
 .navabc {
     background-color: #34A1EA;
     overflow: hidden;
-    width: 75%;
+    width: fit-content;
     margin: 20px auto;
     border-radius: 10px;
 }
@@ -291,11 +295,10 @@ html {
 }
 
 .outcontactos {
-    display: block;
-    width: 80%;
+    overflow: hidden;
+    width: 75%;
     margin: 20px auto;
-    border-radius: 15px;
-    padding: 10px 20px;
+    border-radius: 20px;
 }
 
 .datospersona {
@@ -311,8 +314,7 @@ html {
 }
 
 .agregar {
-    display: inline;
-    float: right;
+    display: inline-block;
     margin: 3px 10px;
     color: black;
     font-size: 1.1rem;
@@ -334,9 +336,17 @@ html {
 .inputcontacto {
     display: block;
     border-radius: 5px;
-    height: 1.5em;
+    height: 2em;
     width: 400px;
     margin: 0 30px 0 30px;
+}
+
+.inputcontactotextarea {
+    display: block;
+    border-radius: 5px;
+    margin: 0 30px 0 30px;
+    height: 6em;
+    width: 400px;
 }
 
 .fotoagragarcontacto {
@@ -405,4 +415,17 @@ html {
 }
 .correcto{
 	background-color: rgb(0,255,0,0.5);
+}
+
+.bloque{
+    display: inline-block;
+}
+
+.fotocontacto{
+    width: 400px;
+    max-width: 50%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin: auto -100px 20% 0;
 }

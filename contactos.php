@@ -18,83 +18,80 @@ echo($texto);
 
 include('header.php');
 
-$texto = <<<TEXTO
-    <h1 class="titulo"> Mis contactos</h1>
-</header>
-<div class="divisor"></div>
-<body>
-    <section name="nav">
-        <div class="navabc">
-        <a>A</a>
-        <a>B</a>
-        <a>C</a>
-        <a>D</a>
-        <a>E</a>
-        <a>F</a>
-        <a>G</a>
-        <a>H</a>
-        <a>I</a>
-        <a>J</a>
-        <a>K</a>
-        <a>L</a>
-        <a>M</a>
-        <a>N</a>
-        <a>Ñ</a>
-        <a>O</a>
-        <a>P</a>
-        <a>Q</a>
-        <a>R</a>
-        <a>S</a>
-        <a>T</a>
-        <a>U</a>
-        <a>V</a>
-        <a>X</a>
-        <a>Y</a>
-        <a>Z</a>
-        <a class="agregar" href="agregarcontacto.html">Añadir Contacto</a>
+$sql = "SELECT user_id, nombre, apellido, telefono, direccion, id_contacto, img FROM contactos WHERE user_id =  '".$_SESSION['user_id']."' ";
+$result = mysqli_query($link, $sql);
+
+function buscarcontacto($result){
+    if (mysqli_num_rows($result) == 0){
+        echo '<div class="personalista">
+        <p class="bold">No tienes ningún contacto!</p>
         </div>
-    </section>
-    <section name="outputcontactos">
-        <fieldset class="outcontactos">
-            <div class="personalista">
-            <p class="bold"><img src="iconos/persona.png" class="iconossugerencia">Leonel Messi</p>
-            <p class="datospersona"><img src="iconos/telefono.png" class="iconossugerencia">11 5961 3577</p>
-            <p class="datospersona"><img src="iconos/lugar.png" class="iconossugerencia">Bonpland 2117, C1425FWA CABA</p>
-            <form action="modificarcont.php?idcontacto=">
-                <input type="submit" value="Modificar" class="modificarboton">
-            </form>
-            <form action="eliminar.php?idcontacto= ">
-                <input type="submit" value="Eliminar" class="eliminarboton">
-            </form>
-            </div>
+        <div class="divisor"></div>';
+    }
+    else{
+        $row = mysqli_fetch_assoc($result);
+        while ($row != NULL){
+
+            $nombre = $row['nombre'];
+            $apellido = $row['apellido'];
+            $telefono = $row['telefono'];
+            $direccion = $row['direccion'];
+            $idcontacto = $row['id_contacto'];
+            $img = $row['img'];
+
+            if ($img == NULL){
+                $img = 'fotopersona.jpg';
+            }
+
+            echo "<div class='personalista'>
+                        <section name = 'datoscontacto' class='bloque izq'>
+                            <p class='bold'><img src='iconos/persona.png' class='iconossugerencia'>$nombre $apellido</p>
+                            <p class='datospersona'><img src='iconos/telefono.png' class='iconossugerencia'>$telefono</p>
+                            <p class='datospersona'><img src='iconos/lugar.png' class='iconossugerencia'>$direccion</p>
+                        </section>
+                        <section name = 'imagenpersona' class='bloque der'>
+                            <img src='userimg/$img' class='fotocontacto'>
+                        </section>
+                        <br>
+                        <section name = 'datoscontacto' class='centro'>
+                            <form method='POST' action='modificarcontacto.php?=$idcontacto'>
+                                <input type='hidden' name='idcontacto' value='$idcontacto'>
+                                <input type='submit' value='Modificar' class='modificarboton'>
+                            </form>
+                            <form method='POST' action='scrpteliminarcontacto.php?=$idcontacto'>
+                                <input type='hidden' name='idcontacto' value='$idcontacto'>
+                                <input type='submit' value='Eliminar' class='eliminarboton'>
+                            </form>
+                        </section>
+                    </div> 
+                    <div class='divisor'></div>";
+            $row = mysqli_fetch_assoc($result);
+        }
+    }
+}
+
+$texto = <<<TEXTO
+                <h1 class="titulo"> Mis contactos</h1>
+            </header>
             <div class="divisor"></div>
-            <div class="personalista">
-                <p class="bold"><img src="iconos/persona.png" class="iconossugerencia">Lautaro Martinez</p>
-                <p class="datospersona"><img src="iconos/telefono.png" class="iconossugerencia">11 5961 3577</p>
-                <p class="datospersona"><img src="iconos/lugar.png" class="iconossugerencia">Bonpland 2117, C1425FWA CABA</p>
-                <form action="modificarcont.php?idcontacto=">
-                    <input type="submit" value="Modificar" class="modificarboton">
-                </form>
-                <form action="eliminar.php?idcontacto= ">
-                    <input type="submit" value="Eliminar" class="eliminarboton">
-                </form>
-            </div>
-            <div class="divisor"></div>
-            <div class="personalista">
-                <p class="bold"><img src="iconos/persona.png" class="iconossugerencia">Angel Di Maria</p>
-                <p class="datospersona"><img src="iconos/telefono.png" class="iconossugerencia">11 5961 3577</p>
-                <p class="datospersona"><img src="iconos/lugar.png" class="iconossugerencia">Bonpland 2117, C1425FWA CABA</p>
-                <form action="modificarcont.php?idcontacto=">
-                    <input type="submit" value="Modificar" class="modificarboton">
-                </form>
-                <form action="eliminar.php?idcontacto= ">
-                    <input type="submit" value="Eliminar" class="eliminarboton">
-                </form>
-            </div>
-        </fieldset>
-    </section>
-</body>
-<div class="divisor"></div>
+            <body>
+            <section name="nav">
+                <div class="topnav mincontent">
+                    <a class="agregaractividad" href="agregarcontacto.php">Añadir Contacto</a>
+                </div>
+            </section>
+                <section name="outputcontactos">
+                    <fieldset class="outcontactos">
+            TEXTO;
+
+            echo($texto);
+
+            buscarcontacto($result);
+            
+            $texto = <<<TEXTO
+                    </fieldset>
+                </section>
+            </body>
 <footer class="footer">
     <p>Creado por <a href="https://github.com/ignaciodibartolo">Ignacio Di Bartolo</a></p>
     <p>UCA 2022</p>
@@ -104,5 +101,7 @@ $texto = <<<TEXTO
 TEXTO;
 
 echo($texto);
+
+
 
 ?>

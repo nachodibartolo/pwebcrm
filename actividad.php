@@ -12,12 +12,6 @@ $pagina = <<<TEXTO
     <title>Actividades</title>
 </head>
 <header>
-TEXTO;
-echo($pagina);
-
-include('header.php');
-
-$pagina = <<<TEXTO
     <h1 class="titulo">Actividades</h1>
     <p class="subtitulo">Historial de Actividades</p>
 </header>
@@ -28,36 +22,68 @@ $pagina = <<<TEXTO
             <a class="agregaractividad" href="agregaractividad.php">Añadir Actividad</a>
         </div>
     </section>
-    <section name="displayactividades">
-        <fieldset class="burbujarecomendacion">
-            <div class="personalista">
-                <p class="bold"><img src="iconos/persona.png" class="iconossugerencia">Leonel Messi, Lautaro Martinez</p>
-                <p class="datospersona"><img src="iconos/check.png" class="iconossugerencia">Cafe</p>
-                <p class="datospersona"><img src="iconos/reloj.png" class="iconossugerencia">16:00</p>
-            <div class="divisor"></div>
-                <p class="datospersona centered">Fuimos a tomar un cafe a la tarde para hablar de la situacion economica actual del pais. Messi menciono que es kirchnerista y que Baradel le parece una persona que quiere el bien comun.</p>
-                <form action="eliminar.php?idactividad= ">
-                    <input type="submit" value="Eliminar" class="eliminarboton">
-                </form>
-            </div>
-        </fieldset>
-        <fieldset class="burbujarecomendacion">
-            <div class="personalista">
-                <p class="bold"><img src="iconos/persona.png" class="iconossugerencia">Alberto Fernandez</p>
-                <p class="datospersona"><img src="iconos/check.png" class="iconossugerencia">Cumpleaños</p>
-                <p class="datospersona"><img src="iconos/reloj.png" class="iconossugerencia">21:00</p>
-            <div class="divisor"></div>
-                <p class="datospersona centered">Cumpleaños de Alberto en Olivos.</p>
-                <form action="eliminar.php?idactividad= ">
-                    <input type="submit" value="Eliminar" class="eliminarboton">
-                </form>
-            </div>
-        </fieldset>
-    </section>
-</body>
+<section name="displayactividades">
+TEXTO;
+
+include('header.php');
+
+$sql = "SELECT `id_actividad`, `user_id`, `id_lugar`, `id_contacto`, `id_accion`, `hora`, `fecha`, `descripcion` FROM actividades WHERE user_id = ".$_SESSION['user_id']." ORDER BY fecha DESC";
+$result = mysqli_query($link, $sql);
+
+function cronologia($result, $link){
+
+    $row = mysqli_fetch_assoc($result);
+    while ($row != NULL){
+
+        $sql = "SELECT nombre, apellido, user_id, id_contacto FROM contactos WHERE user_id = ".$_SESSION['user_id']." AND id_contacto = ".$row['id_contacto']." ";
+        $result2 = mysqli_query($link, $sql);
+        $row2 = mysqli_fetch_assoc($result2);
+        if ($row2 == NULL){
+            $persona = "Persona eliminada";
+        } else {
+            $persona = $row2['nombre']." ".$row2['apellido'];
+        }
+
+        $sql = "SELECT nombre, user_id, lugar_id FROM lugares    WHERE user_id = ".$_SESSION['user_id']." AND lugar_id = ".$row['id_lugar']." ";
+        $result2 = mysqli_query($link, $sql);
+        $row2 = mysqli_fetch_assoc($result2);
+        if ($row2 == NULL){
+            $lugar = "Lugar eliminado";
+        } else {
+            $lugar = $row2['nombre'];
+        }
+
+        $idactividad = $row['id_actividad'];
+
+
+        echo "<fieldset class='burbujarecomendacion'>
+        <div class='personalista'>
+            <p class='bold'><img src='iconos/persona.png' class='iconossugerencia'>$persona</p>
+            <p class='datospersona'><img src='iconos/organizacion.png' class='iconossugerencia'>$lugar</p>
+            <p class='datospersona'><img src='iconos/reloj.png' class='iconossugerencia'>{$row['fecha']} @ {$row['hora']}</p>
+        <div class='divisor'></div>
+            <p class='datospersona centered'>{$row['descripcion']}</p>
+            <form method='POST' action='scrpteliminaractividad.php?='>
+                <input type='hidden' name='id_actividad' value='$idactividad'>
+                <input type='submit' value='Eliminar' class='eliminarboton'>
+            </form>
+        </div>
+    </fieldset>";
+
+    $row = mysqli_fetch_assoc($result);
+    }
+}
+
+echo($pagina);
+
+cronologia($result, $link);
+
+
+$pagina = <<<TEXTO
+        </section>
+    </body>
 <div class="divisor"></div>
 </html>
-
 TEXTO;
 
 echo($pagina);

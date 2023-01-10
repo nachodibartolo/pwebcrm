@@ -1,8 +1,25 @@
 <?php
 
+include('header.php');
+
+function randomizerbbdd($result){
+    $row = "";
+    if (mysqli_num_rows($result) > 1){
+        $filaelegida = rand(1, mysqli_num_rows($result));
+    }
+    else{$filaelegida = 1;}
+
+    $i = 1;
+    $row = mysqli_fetch_assoc($result);
+    while ($i < $filaelegida){
+        $row = mysqli_fetch_assoc($result);
+        $i++;
+    }
+    return $row;
+}
+
 
 $texto = <<<TEXTO
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -13,50 +30,139 @@ $texto = <<<TEXTO
 <link href="styles.css" rel="stylesheet">
 <title>Inicio</title>
 </head>
-<header>
 TEXTO;
 
-include('header.php');
+
+/* -> Redirect si no esta logueado <- */
+
+if($_SESSION['signed_in'] == 0) {
+    session_start();
+    session_destroy();
+    header("Location: http://localhost/pwebcrm/login.php");
+    die();
+    exit;
+}
+/* != FIN Redirect si no esta logueado != */
 
 echo($texto);
 
+/* -> Request Persona <- */
+
+$sql = "SELECT user_id, nombre, apellido, telefono, img FROM contactos WHERE user_id =  '".$_SESSION['user_id']."' ";
+$result = mysqli_query($link, $sql);
+
+if (mysqli_num_rows($result) == 0){
+    $nombre = 'No tienes ningun contacto.';
+    $apellido = '';
+    $telefonopersona = '';
+}
+else{
+    $row = randomizerbbdd($result);
+
+    $nombre = $row['nombre'];
+    $apellido  = $row['apellido'];
+    $telefonopersona  = $row['telefono'];
+    $img = $row['img'];
+    if ($img == NULL){
+        $img = 'fotopersona.jpg';
+    }
+}
+/* != FIN Request Persona != */
+
+
+/* -> Request Lugares <- */
+
+$sql = "SELECT user_id, nombre, direccion, telefono, img FROM lugares WHERE user_id =  '".$_SESSION['user_id']."' ";
+$result = mysqli_query($link, $sql);
+
+if (mysqli_num_rows($result) == 0){
+    $nombrelugar = 'No tienes ningun lugar cargado.';
+    $direccion = '';
+    $telefono = '';
+    $imglugar = 'lugardefault.png';
+    $nombrelugar2 = 'No tienes ningun lugar cargado.';
+    $direccion2 = '';
+    $telefono2 = '';
+    $imglugar2 = 'lugardefault.png';
+}
+else{
+
+    $row = randomizerbbdd($result);
+
+    $nombrelugar = $row['nombre'];
+    $direccion = $row['direccion'];
+    $telefono = $row['telefono'];
+    $imglugar = $row['img'];
+    if ($imglugar == NULL){
+        $imglugar = 'lugardefault.png';
+    }
+
+    $i = 0;
+    $result = mysqli_query($link, $sql);
+    $row2 = randomizerbbdd($result);
+    while ($row2 == $row && $i < 10){
+        $result = mysqli_query($link, $sql);
+        $row2 = randomizerbbdd($result);
+        $i++;
+    }
+
+    $nombrelugar2 = $row2['nombre'];
+    $direccion2 = $row2['direccion'];
+    $telefono2 = $row2['telefono'];
+    $imglugar2 = $row2['img'];
+    if ($imglugar2 == NULL){
+        $imglugar2 = 'lugardefault.png';
+    }
+}
+/* != FIN Request Lugar != */
+
+
+/* -> Request Accion <- */
+
+$sql = "SELECT user_id, accion FROM acciones WHERE user_id =  '".$_SESSION['user_id']."' ";
+$result = mysqli_query($link, $sql);
+
+$row = randomizerbbdd($result);
+
+$accion = $row['accion'];
+/* != Fin request accion != */
+
+
 $texto = <<<TEXTO
+<header>
     <h1 class="titulo">Dashboard</h1>
-    <p class="subtitulo">Lindo día para hacer algo!</p>
+    <p class="subtitulo">Buenos Días <a class="bold">{$_SESSION['user_name']}</a>, lindo día para hacer algo!</p>
 </header>
 <div class="divisor"></div>
 <body>
-
     <fieldset class="sugerencia">
         <h2>Que te parece hacer algo hoy con:</h2>
         <br>
-        <img src="fotos/fotopersona.jpg" alt="Foto de perfil" class="fotosugerencia">
-        <p class="datossugerencia"><img src="iconos/persona.png" class="iconossugerencia">Ricardo Fort</p>
+        <img src="userimg/$img" alt="Foto de perfil" class="fotosugerencia">
+        <p class="datossugerencia"><img src="iconos/persona.png" class="iconossugerencia">$nombre $apellido</p>
         <br>
-        <p class="datossugerencia"><img src="iconos/check.png" class="iconossugerencia">Ir a tomar una <a class="ch bold">cerveza</a> en:</p>
+        <p class="datossugerencia"><img src="iconos/check.png" class="iconossugerencia">$accion</p>
         <br>
-        <p class="datossugerencia"><img src="iconos/organizacion.png" class="iconossugerencia">El bar de Mariano</p>
+        <p class="datossugerencia"><img src="iconos/organizacion.png" class="iconossugerencia">$nombrelugar</p>
         <br>
-        <p class="datossugerencia"><img src="iconos/lugar.png" class="iconossugerencia">Calle falsa 123</p>
+        <p class="datossugerencia"><img src="iconos/lugar.png" class="iconossugerencia">$direccion</p>
         <br>
-        <input type="button" value="Mensaje" class="botonwhatsapp"/>
+        <a href="tel:$telefonopersona"><input type="button" value="Telefono: $telefonopersona" class="botonllamada"/></a>
     </fieldset>
     
     <fieldset class="recomendaciones">
         <fieldset class="recomendacion izq">
-            <h2 class="bold"><img src="iconos/organizacion.png" class="iconossugerencia">Pizzeria la Camorra</h2>
-            <p class="datossugerencia"><img src="iconos/lugar.png" class="iconossugerencia">Bonpland 2117, C1425FWA CABA</p>
-            <p class="datossugerencia"><img src="iconos/reloj.png" class="iconossugerencia">7pm a 12am</p>
-            <input type="button" value="Telefono: 01123599447" class="botonllamada"/>
+            <h2 class="bold"><img src="iconos/organizacion.png" class="iconossugerencia">$nombrelugar</h2>
+            <p class="datossugerencia"><img src="iconos/lugar.png" class="iconossugerencia">$direccion</p>
+            <a href="tel:$telefono"><input type="button" value="Telefono: $telefono" class="botonllamada"/></a>
         </fieldset>
-        <img src="fotos/pizeria.jpg" alt="Foto pizeria" class="fotorecomendacion">
+        <img src="userimg/$imglugar" alt="Foto pizeria" class="fotorecomendacion">
         <div class="divisor"></div>
-        <img src="fotos/cerveceria.jpg" alt="Foto cerveceria" class="fotorecomendacion">
+        <img src="userimg/$imglugar2" alt="Foto cerveceria" class="fotorecomendacion">
         <fieldset class="recomendacion der">
-            <h2 class="bold"><img src="iconos/organizacion.png" class="iconossugerencia">Cerveceria Rabbieta</h2>
-            <p class="datossugerencia"><img src="iconos/lugar.png" class="iconossugerencia">Av. del Libertador 3949, C1426 CABA</p>
-            <p class="datossugerencia"><img src="iconos/reloj.png" class="iconossugerencia">5pm a 2am</p>
-            <input type="button" value="Telefono: 01123599447" class="botonllamada"/>
+            <h2 class="bold"><img src="iconos/organizacion.png" class="iconossugerencia">$nombrelugar2</h2>
+            <p class="datossugerencia"><img src="iconos/lugar.png" class="iconossugerencia">$direccion2</p>
+            <a href="tel:$telefono2"><input type="button" value="Telefono: $telefono2" class="botonllamada"/></a>
         </fieldset>
     </fieldset>
 
@@ -67,7 +173,6 @@ $texto = <<<TEXTO
     <p>UCA 2022</p>
 </footer>
 </html>
-
 TEXTO;
 
 echo($texto);
