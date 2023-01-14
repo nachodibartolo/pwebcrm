@@ -20,6 +20,7 @@ $pagina = <<<TEXTO
     <section name="nav">
         <div class="topnav mincontent">
             <a class="agregaractividad" href="agregaractividad.php">Añadir Actividad</a>
+            <a class="agregaractividad" href="agregaraccion.php">Añadir Accion</a>
         </div>
     </section>
 <section name="displayactividades">
