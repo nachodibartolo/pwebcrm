@@ -1,3 +1,4 @@
+
 <?php
 
 $pagina = <<<TEXTO
